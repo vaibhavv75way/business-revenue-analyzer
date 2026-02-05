@@ -1,4 +1,4 @@
-# Business Revenue Dashboard (Angular Mini Project)
+# Business Revenue Analyzer (Angular Mini Project)
 
 This project is a mini Angular application that demonstrates how to build a business-focused financial dashboard using custom pipes, date-based filtering, and user input handling. The emphasis is on implementing real-world business rules rather than simple numeric formatting.
 
