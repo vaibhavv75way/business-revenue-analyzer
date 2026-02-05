@@ -1,32 +1,32 @@
-<div class="bg-white p-6 rounded-xl shadow mb-8 grid grid-cols-2">
+<div class="bg-white p-10 rounded-xl shadow mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="flex flex-col">
-        <label>Start Date</label>
-        <input type="date" [ngModel]="filterStartDate()" (ngModelChange)="filterStartDate.set($event)" />
+        <label class="text-lg">Start Date</label>
+        <input type="date" [ngModel]="filterStartDate()" (ngModelChange)="filterStartDate.set($event)" class="h-8 border rounded-lg p-4"/>
     </div>
 
     <div class="flex flex-col">
-        <label>End Date</label>
-        <input type="date" [ngModel]="filterEndDate()" (ngModelChange)="filterEndDate.set($event)" />
+        <label class="text-lg">End Date</label>
+        <input type="date" [ngModel]="filterEndDate()" (ngModelChange)="filterEndDate.set($event)" class=" h-8 border rounded-lg p-4" />
     </div>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
     <div class="bg-white p-6 rounded-xl shadow">
-        <p>Revenue</p>
+        <p class="text-lg">Revenue</p>
         <h2 class="text-2xl text-green-600">
            + {{ totalRevenue() | formattedCurrency }}
         </h2>
     </div>
 
     <div class="bg-white p-6 rounded-xl shadow">
-        <p>Expense</p>
+        <p class="text-lg">Expense</p>
         <h2 class="text-2xl text-red-600">
             - {{ totalExpense() | formattedCurrency}}
         </h2>
     </div>
 
     <div class="p-6 rounded-xl shadow" [class.bg-green-50]="totalProfit() >= 0" [class.bg-red-50]="totalProfit() < 0">
-        <p>Net Profit</p>
+        <p class="text-lg">Net Profit</p>
         <h2 class="text-2xl">
             {{ totalProfit() | formattedCurrency:true}}
         </h2>
@@ -34,17 +34,30 @@
 </div>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
+<div class="bg-white p-10 rounded-xl shadow">
     <h2 class="text-xl font-semibold mb-4">Add Financial Entry</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <input type="date" [(ngModel)]="formData().startDate" />
-        <input type="date" [(ngModel)]="formData().endDate" />
+        <div class="flex flex-col">
+            <label class="text-lg">Start Date</label>
+            <input type="date" [(ngModel)]="formData().startDate" class="h-8 border rounded-lg p-4" />
+        </div>
+        <div class="flex flex-col">
+            <label class="text-lg">End Date</label>
+            <input type="date" [(ngModel)]="formData().endDate" class="h-8 border rounded-lg p-4" />
+        </div>
+        
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <input type="number" placeholder="Revenue" [(ngModel)]="formData().revenue" />
-        <input type="number" placeholder="Expense" [(ngModel)]="formData().expense" />
+        <div class="flex flex-col">
+            <label class="text-lg">Revenue</label>
+            <input type="number" placeholder="Revenue" [(ngModel)]="formData().revenue" class="h-8 border rounded-lg p-4" />
+        </div>
+        <div class="flex flex-col">
+            <label class="text-lg">Expense</label>
+            <input type="number" placeholder="Expense" [(ngModel)]="formData().expense" class="h-8 border rounded-lg p-4" />
+        </div>
     </div>
 
     <button (click)="addEntry()" class="bg-blue-600 text-white px-6 py-2 rounded-lg">
