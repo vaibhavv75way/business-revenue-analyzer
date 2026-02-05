@@ -1,59 +1,60 @@
-# Frontend
+# Business Revenue Dashboard (Angular Mini Project)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+This project is a mini Angular application that demonstrates how to build a business-focused financial dashboard using custom pipes, date-based filtering, and user input handling. The emphasis is on implementing real-world business rules rather than simple numeric formatting.
 
-## Development server
+---
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- Date range selection to filter financial data (Start Date – End Date)
+- Financial summary including:
+  - Total Revenue
+  - Total Expense
+  - Net Profit or Loss
+- Custom currency formatting based on business rules
+- Ability to add financial entries for a selected date range
+- Automatic recalculation when data or date range changes
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular (CLI v21.1.2)
+- TypeScript
+- Standalone Components
+- Angular Signals
+- Custom Pipes
+- Tailwind CSS
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Business Currency Formatting Rules
 
-```bash
-ng generate --help
-```
+The application uses a custom Angular pipe to format currency according to business logic:
 
-## Building
+- Revenue is displayed with a positive sign
+- Expense is displayed with a negative sign
+- Profit is displayed based on net value (positive or negative)
+- Values are formatted as:
+  - Crores (Cr) for values >= 1,00,00,000
+  - Lakhs (L) for values >= 1,00,000
+  - Thousands (K) for values >= 1,000
+  - Exact value for amounts below 1,000
+- Zero values are displayed as `₹ 0`
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## Project Structure
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```text
+src/app
+├── models
+│   └── financial-entry.model.ts
+├── pages
+│   └── dashboard
+│       ├── dashboard.component.ts
+│       └── dashboard.component.html
+├── pipes
+│   └── business-currency.pipe.ts
+├── app.routes.ts
+└── main.ts
